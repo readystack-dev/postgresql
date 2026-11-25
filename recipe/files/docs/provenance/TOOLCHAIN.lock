@@ -1,0 +1,133 @@
+{
+  "apt_refresh": [
+    {
+      "min_version": "10.42-4ubuntu2.2",
+      "package": "libpcre2-8-0",
+      "reason": "UBUNTU-CVE-2026-103111, UBUNTU-CVE-2026-86145, UBUNTU-CVE-2026-89157, UBUNTU-CVE-2026-89161: libpcre2-8-0 10.42-4ubuntu2.1 -> 10.42-4ubuntu2.2"
+    }
+  ],
+  "build_method": "source-rebuild-c",
+  "chain_id": 1043,
+  "dep_bumps": [],
+  "expected_residuals": [],
+  "images": [
+    {
+      "digest": "sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5",
+      "ref": "ubuntu:24.04",
+      "role": "builder"
+    },
+    {
+      "digest": "sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5",
+      "ref": "ubuntu:24.04",
+      "role": "offline_builder"
+    },
+    {
+      "digest": "sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5",
+      "ref": "ubuntu:24.04",
+      "role": "base"
+    }
+  ],
+  "mod_replaces": [],
+  "runtime_base": {
+    "kind": "chisel",
+    "provides": [
+      "postgres",
+      "initdb",
+      "pg_ctl",
+      "psql",
+      "pg_isready",
+      "pg_dump",
+      "pg_dumpall",
+      "pg_restore",
+      "createdb",
+      "dropdb",
+      "pg_basebackup",
+      "pg_upgrade",
+      "vacuumdb",
+      "reindexdb",
+      "clusterdb",
+      "createuser",
+      "dropuser"
+    ],
+    "rootfs_run": [
+      "chmod 1777 \"$ROOT/docker-entrypoint-initdb.d\"",
+      "ln -s /usr/share/zoneinfo/Etc/UTC \"$ROOT/etc/localtime\""
+    ],
+    "shell": true,
+    "slices": [
+      "libicu74_libs",
+      "libssl3t64_libs",
+      "zlib1g_libs",
+      "libzstd1_libs",
+      "libxml2_libs",
+      "libtinfo6_libs",
+      "libstdc++6_libs",
+      "libreadline8t64_libs",
+      "liblzma5_libs",
+      "liblz4-1_libs",
+      "libgcc-s1_libs",
+      "libc-bin_locale"
+    ],
+    "tools": [
+      "bash",
+      "mkdir",
+      "mktemp",
+      "chmod",
+      "tar"
+    ]
+  },
+  "schema": "kitforge.toolchain_lock.v1",
+  "slug": "postgresql",
+  "source": {
+    "build_cmds": [
+      "./configure --prefix=/usr/local/pgsql --with-openssl --with-libxml --with-icu --with-lz4 --with-zstd --with-readline --without-llvm",
+      "make -j\"$(nproc)\" world-bin",
+      "make install-world-bin"
+    ],
+    "build_env": {
+      "DEB_BUILD_OPTIONS": "nocheck"
+    },
+    "build_packages": [
+      "build-essential",
+      "gcc",
+      "make",
+      "bison",
+      "flex",
+      "perl",
+      "pkg-config",
+      "libreadline-dev",
+      "zlib1g-dev",
+      "libssl-dev",
+      "libicu-dev",
+      "libxml2-dev",
+      "liblz4-dev",
+      "libzstd-dev",
+      "ca-certificates",
+      "git"
+    ],
+    "build_system": "autoconf-make",
+    "builder_image": "ubuntu:24.04",
+    "commit": "f5c41f6681c910b3f69951bf6fb97c6d74605d25",
+    "commit_epoch": 1794254969,
+    "configure": "./configure",
+    "configure_flags": [
+      "--prefix=/usr/local/pgsql",
+      "--with-openssl",
+      "--with-libxml",
+      "--with-icu",
+      "--with-lz4",
+      "--with-zstd",
+      "--with-readline",
+      "--with-system-tzdata=/usr/share/zoneinfo",
+      "--without-llvm"
+    ],
+    "install_cmd": "make install-world-bin",
+    "install_prefix": "/usr/local/pgsql",
+    "ref": "REL_18_7",
+    "repo": "https://github.com/postgres/postgres",
+    "source_date_epoch": 1794522143,
+    "source_date_epoch_basis": "release-cut",
+    "source_date_epoch_provenance": "the time release 18.7-CE-ubuntu24.04-r1 was cut (2026-11-12T22:22:23Z), by scripts/retarget.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit f5c41f6681c9, dated 2026-11-09T20:09:29Z (source.commit_epoch)."
+  },
+  "version": "18.7"
+}

@@ -1,0 +1,8 @@
+image_manifest_digest=sha256:bdae6da0f98801629d04c33a4da257a6041af05c7590f7a032688f220b0207a6
+config_digest=sha256:22b46f6da7c53f192178febe5e6147157adad238f8f26d4f008b8eef6e1ddb5e
+tag=readystack/postgresql:18.7-CE-ubuntu24.04-r1
+probe_port=5432
+probe_path=/
+probe_timeout=180
+verify_secret=POSTGRES_PASSWORD
+probe_exec=pg_isready -U postgres -h 127.0.0.1 -p 5432

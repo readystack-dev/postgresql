@@ -1,0 +1,9 @@
+{
+  "schema": "kitforge.source_tree_hash.v1",
+  "slug": "postgresql",
+  "repo": "https://github.com/postgres/postgres",
+  "ref": "REL_18_7",
+  "commit": "f5c41f6681c910b3f69951bf6fb97c6d74605d25",
+  "tree_listing_sha256": "0ed1d466cd2e03b9799e59833fc5b40f4d1f72a9100c46738a047751b9e41df3",
+  "file_count": 7352
+}

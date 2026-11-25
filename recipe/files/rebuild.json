@@ -1,0 +1,41 @@
+{
+  "bases": [
+    {
+      "digest": "sha256:fea12ba16096adec0f699ce1c4da2154d320450e56c1f63671f95d2a3551c77b",
+      "layout": "bases/golang_1.27.3-bookworm_972b4110ba0f.oci",
+      "ref": "golang:1.27.3-bookworm@sha256:972b4110ba0f47539a975c31e52c64765e1ff19f2d74469ae4a595c6676e80a5"
+    },
+    {
+      "digest": "sha256:77eb101c607d6e3d4f5ad0c8a02c2136c689b98aba1f359e6502ba517e5c57ec",
+      "layout": "bases/ubuntu_24.04_2198e4c65076.oci",
+      "ref": "ubuntu:24.04@sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5"
+    }
+  ],
+  "engine": {
+    "archive": "toolchain/buildkit.tar",
+    "image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0",
+    "kind": "buildkit",
+    "tag": "moby/buildkit:v0.31.2"
+  },
+  "inputs": {
+    "context": ".",
+    "dockerfile": "Dockerfile.offline.pinned",
+    "mtime_policy": "clamp",
+    "source_date_epoch": 1794522143,
+    "tree_hash": "sha256:d071328d75e83306fd4f42a7aabc93464b131e978616cd226ffdf74e7f606938"
+  },
+  "probe": {
+    "exec": "pg_isready -U postgres -h 127.0.0.1 -p 5432",
+    "port": 5432,
+    "secrets": [
+      "POSTGRES_PASSWORD"
+    ],
+    "timeout_s": 180
+  },
+  "schema": "readystack-rebuild-bundle/v0.1",
+  "subject": {
+    "config_digest": "sha256:22b46f6da7c53f192178febe5e6147157adad238f8f26d4f008b8eef6e1ddb5e",
+    "image_manifest_digest": "sha256:bdae6da0f98801629d04c33a4da257a6041af05c7590f7a032688f220b0207a6",
+    "name": "docker.io/readystack/postgresql:18.7-CE-ubuntu24.04-r1"
+  }
+}
